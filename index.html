@@ -321,11 +321,7 @@
             // Show intro overlay
             introOverlay.classList.remove('hidden');
 
-            // Show collage overlay
-            collageOverlay.classList.remove('opacity-0');
-            setTimeout(() => {
-                collageOverlay.classList.add('opacity-0');
-            }, 2000);
+            // Show collage overlay after "me."
 
             // 1. Fade in first sentence
             setTimeout(() => {
@@ -370,7 +366,6 @@
                                 'dark:text-gray-200', 'super-glow'
                             );
                             
-                            // Wait 1 second, then flash collage, hold for 1.5s, then finish
                             setTimeout(() => {
                                 const collageOverlay = document.getElementById('collage-overlay');
                                 const flashOpacities = [0.3, 0.6, 0.4, 0.8, 0.5, 1];
@@ -382,10 +377,10 @@
                                         flashIndex++;
                                         setTimeout(flashCollage, 80);
                                     } else {
-                                        // Hold at 100% for 1.5 seconds then finish
                                         setTimeout(finishIntro, 1500);
                                     }
                                 };
+                                collageOverlay.classList.remove('opacity-0');
                                 flashCollage();
                             }, 1000);
                         }, delay);
