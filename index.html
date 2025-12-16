@@ -150,16 +150,17 @@
     <!-- INTRO OVERLAY (z-40) -->
     <div id="intro-overlay" class="fixed inset-0 z-40 flex flex-col items-center justify-center p-8 bg-[#f2f2f2] dark:bg-[#050505] transition-opacity duration-1000 hidden">
         
-        <!-- Updated collage overlay - starts hidden, will animate from top-left -->
-        <div id="collage-overlay" class="fixed inset-0 z-35 opacity-0 pointer-events-none" style="background-image: url('/public/collage.png'); background-size: cover; background-position: center;"></div>
+        <!-- Fixed collage overlay - correct URL, proper z-index behind text -->
+        <div id="collage-overlay" class="fixed inset-0 opacity-0 pointer-events-none" style="z-index: 39; background-image: url('/collage.png'); background-size: cover; background-position: center;"></div>
         
         <!-- Step 1 Text -->
         <p id="intro-text-1" class="text-xl md:text-3xl font-sans font-light text-center max-w-4xl text-balance leading-relaxed opacity-0 transition-opacity duration-700 tracking-tight text-gray-600 dark:text-gray-300">
             "Growing up, if you looked at my circumstances, you'd think I wouldn't achieve much in this life."
         </p>
 
+        <!-- Added z-50 to keep text on top of collage -->
         <!-- Step 2 Container -->
-        <div id="intro-text-2-container" class="hidden flex-col items-center gap-4 mt-4 text-center">
+        <div id="intro-text-2-container" class="hidden flex-col items-center gap-4 mt-4 text-center relative z-50">
             <h2 id="intro-text-static" class="text-3xl md:text-5xl font-sans font-light tracking-tight text-gray-400 dark:text-gray-500 transition-all duration-700 blur-in-start">
                 But I remained
             </h2>
@@ -376,8 +377,8 @@
                                 'dark:text-gray-200', 'super-glow'
                             );
                             
-                            collageOverlay.style.animation = 'collage-fade-in 0.8s ease-out forwards';
-                            setTimeout(finishIntro, 3000); // 0.8s fade + 1.5s hold = 3000ms before transitioning
+                            collageOverlay.style.animation = 'collage-fade-in 1.5s ease-out forwards';
+                            setTimeout(finishIntro, 3000); // 1.5s fade + 1.5s hold
                         }, delay);
                     }
                 };
@@ -387,22 +388,25 @@
 
         function finishIntro() {
             const collageOverlay = document.getElementById('collage-overlay');
+            
             collageOverlay.style.transition = 'opacity 0.7s ease';
             collageOverlay.style.opacity = '0';
             
-            // Fade out intro overlay
-            introOverlay.classList.add('opacity-0', 'pointer-events-none');
-            
-            // Unlock scrolling
-            body.classList.remove('intro-active');
-            
-            // Fade in main elements
-            mainContent.classList.remove('opacity-0', 'pointer-events-none');
-            themeToggleWrapper.classList.remove('opacity-0');
-
             setTimeout(() => {
-                introOverlay.style.display = 'none';
-            }, 1000);
+                // Fade out intro overlay
+                introOverlay.classList.add('opacity-0', 'pointer-events-none');
+                
+                // Unlock scrolling
+                body.classList.remove('intro-active');
+                
+                // Fade in main elements
+                mainContent.classList.remove('opacity-0', 'pointer-events-none');
+                themeToggleWrapper.classList.remove('opacity-0');
+
+                setTimeout(() => {
+                    introOverlay.style.display = 'none';
+                }, 1000);
+            }, 700);
         }
     </script>
 
