@@ -111,13 +111,11 @@
         }
         
         /* Keyframes for collage fade from top-left */
-        @keyframes collage-reveal {
+        @keyframes collage-fade-in {
             0% {
-                clip-path: circle(0% at 0% 0%);
                 opacity: 0;
             }
             100% {
-                clip-path: circle(200% at 0% 0%);
                 opacity: 1;
             }
         }
@@ -357,8 +355,6 @@
 
             // 4. Start Word Flicker
             setTimeout(() => {
-                collageOverlay.style.animation = 'collage-reveal 4s ease-out forwards';
-                
                 let index = 0;
                 let delay = 1300; 
 
@@ -380,7 +376,8 @@
                                 'dark:text-gray-200', 'super-glow'
                             );
                             
-                            setTimeout(finishIntro, 1500);
+                            collageOverlay.style.animation = 'collage-fade-in 0.8s ease-out forwards';
+                            setTimeout(finishIntro, 2300); // 0.8s fade + 1.5s hold
                         }, delay);
                     }
                 };
