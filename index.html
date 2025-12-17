@@ -521,6 +521,34 @@
                 document.getElementById('image-modal').classList.remove('active');
             }
         }
+
+        function skipToMain() {
+            // Stop any audio playing
+            audio.pause();
+            audio.currentTime = 0;
+            
+            // Hide all intro elements immediately
+            startScreen.style.display = 'none';
+            introOverlay.style.display = 'none';
+            collageOverlay.style.display = 'none';
+            
+            // Show main content immediately
+            body.classList.remove('intro-active');
+            mainContent.classList.remove('opacity-0', 'pointer-events-none');
+            themeToggleWrapper.classList.remove('opacity-0');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                // Check if we're in the intro (start screen or intro animation)
+                const inStartScreen = startScreen.style.display !== 'none';
+                const inIntro = !introOverlay.classList.contains('hidden') || introOverlay.style.display !== 'none';
+                
+                if (inStartScreen || inIntro) {
+                    skipToMain();
+                }
+            }
+        });
     </script>
 
 </body></html>
