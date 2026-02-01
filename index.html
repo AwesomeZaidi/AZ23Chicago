@@ -208,6 +208,32 @@
         .image-modal-close:hover {
             background: rgba(0, 0, 0, 0.8);
         }
+
+        /* Navigation Styles */
+        .nav-link, .mobile-nav-link {
+            transition: all 0.2s ease;
+        }
+
+        /* Smooth page transitions */
+        .page-section {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Details/Summary styling */
+        details summary::-webkit-details-marker {
+            display: none;
+        }
     </style>
 </head>
 <body class="intro-active bg-[#f2f2f2] text-[#111] dark:bg-[#050505] dark:text-[#ededed] min-h-screen flex flex-col font-sans antialiased selection:bg-gray-300 dark:selection:bg-gray-800 relative">
@@ -218,12 +244,70 @@
         <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/autdio-nmE5h3bZ0ffIi9ca5XxzIxvbQuCamN.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Theme Toggle -->
-    <div class="fixed top-6 right-6 z-50 opacity-0 transition-opacity duration-1000" id="theme-toggle-wrapper">
-        <button id="theme-toggle" class="p-2 rounded-full bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-200 focus:outline-none border border-transparent dark:border-zinc-800 cursor-pointer">
-            <iconify-icon icon="lucide:sun" class="hidden dark:block text-gray-400" width="20" stroke-width="1.5"></iconify-icon>
-            <iconify-icon icon="lucide:moon" class="block dark:hidden text-gray-500" width="20" stroke-width="1.5"></iconify-icon>
-        </button>
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 opacity-0 transition-opacity duration-1000 bg-[#f2f2f2]/80 dark:bg-[#050505]/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo/Home -->
+            <button onclick="navigateTo('home')" class="text-lg font-medium tracking-tight text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+                AZ23
+            </button>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <button onclick="navigateTo('home')" class="nav-link text-sm font-normal text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors" data-page="home">
+                    Home
+                </button>
+                <button onclick="navigateTo('islam')" class="nav-link text-sm font-normal text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors" data-page="islam">
+                    Islam
+                </button>
+                <button onclick="navigateTo('training')" class="nav-link text-sm font-normal text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors" data-page="training">
+                    Training Split
+                </button>
+            </div>
+
+            <!-- Right Side: Theme Toggle + Hamburger -->
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors duration-200 focus:outline-none border border-transparent dark:border-zinc-800 cursor-pointer">
+                    <iconify-icon icon="lucide:sun" class="hidden dark:block text-gray-400" width="20" stroke-width="1.5"></iconify-icon>
+                    <iconify-icon icon="lucide:moon" class="block dark:hidden text-gray-500" width="20" stroke-width="1.5"></iconify-icon>
+                </button>
+
+                <!-- Hamburger Menu (Mobile Only) -->
+                <button id="hamburger" class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors focus:outline-none">
+                    <iconify-icon icon="lucide:menu" class="text-gray-600 dark:text-gray-400" width="24" stroke-width="1.5"></iconify-icon>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 pointer-events-none">
+        <!-- Backdrop -->
+        <div id="menu-backdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+
+        <!-- Drawer -->
+        <div id="menu-drawer" class="absolute top-0 right-0 h-full w-64 bg-[#f2f2f2] dark:bg-[#050505] border-l border-gray-200 dark:border-gray-800 shadow-2xl transform translate-x-full transition-transform duration-300">
+            <!-- Close Button -->
+            <div class="flex justify-end p-6">
+                <button id="close-menu" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-zinc-800 transition-colors">
+                    <iconify-icon icon="lucide:x" class="text-gray-600 dark:text-gray-400" width="24" stroke-width="1.5"></iconify-icon>
+                </button>
+            </div>
+
+            <!-- Menu Links -->
+            <div class="flex flex-col gap-6 px-6">
+                <button onclick="navigateTo('home'); closeMobileMenu();" class="mobile-nav-link text-left text-lg font-normal text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors" data-page="home">
+                    Home
+                </button>
+                <button onclick="navigateTo('islam'); closeMobileMenu();" class="mobile-nav-link text-left text-lg font-normal text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors" data-page="islam">
+                    Islam
+                </button>
+                <button onclick="navigateTo('training'); closeMobileMenu();" class="mobile-nav-link text-left text-lg font-normal text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors" data-page="training">
+                    Training Split
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- START SCREEN (z-50) -->
@@ -260,98 +344,223 @@
     </div>
 
     <!-- MAIN CONTENT (z-10) -->
-    <main id="main-content" class="relative z-10 flex-grow flex flex-col w-full max-w-2xl mx-auto pt-24 px-6 pb-32 opacity-0 transition-opacity duration-1000 pointer-events-none">
-        
-        <!-- Header -->
-        <header class="flex items-center justify-between gap-6 mb-16">
-            <div class="flex items-center gap-6">
-                <img src="/public/asim.png" alt="Asim Zaidi" class="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover ring-1 ring-black/5 dark:ring-white/10">
-                <div>
-                    <h1 class="text-2xl md:text-3xl font-medium tracking-tight mb-0.5 text-black dark:text-white">Asim Zaidi</h1>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-normal">Engineer &amp; Builder</p>
-                </div>
-            </div>
-            <!-- Added collage-preview class and click handler for modal -->
-            <img src="/public/preview.png" alt="Preview" class="h-20 w-auto object-contain collage-preview" id="collage-thumb" onclick="openImageModal()">
-        </header>
+    <main id="main-content" class="relative z-10 flex-grow w-full opacity-0 transition-opacity duration-1000 pointer-events-none">
 
-        <!-- Bio -->
-        <section class="mb-12 w-full space-y-6 text-sm md:text-[15px] leading-7 text-gray-600 dark:text-[#A1A1AA] font-normal">
-            <p>
-                I’m currently a <span class="text-gray-900 dark:text-white font-medium">senior engineer</span> at a fintech startup building the world’s first perpetual futures exchange. Before that, I was a Lead Frontend Engineer on the <span class="text-gray-900 dark:text-white font-medium">AI Hub at Apple</span> headquarters. Prior to Apple, I <span class="text-gray-900 dark:text-white font-medium">led a team at Atlassian</span> where we built an internal customer analytics platform (C360), working directly with the Head of Data and the CRO. Earlier in my career, I worked at Livly, a prop-tech startup in Chicago’s West Loop — an experience that shaped how I think about product, teams, and ownership.
-            </p>
-            <p>
-                Outside of work, I run <a href="https://techmade.co" target="_blank" class="text-gray-900 dark:text-white font-medium link-hover">Techmade</a>. It’s mostly a collection of things I enjoy building with friends. Sometimes that means creating world-class websites for people we believe in. Other times it’s writing. Techmade is now one of the <span class="text-gray-900 dark:text-white font-medium">largest programming blogs on the internet</span>, and we recently <span class="text-gray-900 dark:text-white font-medium">launched a frontend interview prep platform</span> designed to be the most practical, no-fluff resource for engineers aiming for big-tech roles.
-            </p>
-            <p>
-                I’m also the creator of <a href="https://autogripghost.com" target="_blank" class="text-gray-900 dark:text-white font-medium link-hover">Ghost Driver</a> — an idea I came up with while not driving my Tesla.
-            </p>
-            <p>
-                What’s next? I’m focused on growing as an engineer, especially in the AI-driven era we’ve entered. I want to keep empowering others through Techmade. Longer term, I plan to devote my time and energy to a cause that matters far more to me than temporary monetary outcomes. That chapter isn’t ready to be shared yet.
-            </p>
-            <p>
-                Fitness is another major part of my life. It’s something I neglected for years while I was fully focused on building software products. These days, I train consistently and enjoy <span class="text-gray-900 dark:text-white font-medium">triathlons</span>, <span class="text-gray-900 dark:text-white font-medium">boxing</span>, and <span class="text-gray-900 dark:text-white font-medium">lifting</span>. I’m a former <span class="text-gray-900 dark:text-white font-medium">gymnast</span> — not actively competing anymore, but the mindset never really leaves.
-            </p>
-        </section>
-
-        <!-- FOREVER GRATEFUL TICKER -->
-        <section class="z-10 sm:pb-24 sm:pt-10 pt-8 pb-8 relative w-full" style="opacity: 1;">
-            <div class="max-w-7xl mr-auto ml-auto">
-                <div class="text-center mb-10">
-                    <p class="uppercase text-xs font-medium text-zinc-500 tracking-wide">Forever grateful for</p>
+        <!-- HOME PAGE -->
+        <div id="home-page" class="page-section flex flex-col max-w-2xl mx-auto pt-32 px-6 pb-32">
+            <!-- Header -->
+            <header class="flex items-center justify-between gap-6 mb-16">
+                <div class="flex items-center gap-6">
+                    <img src="/public/asim.png" alt="Asim Zaidi" class="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover ring-1 ring-black/5 dark:ring-white/10">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-medium tracking-tight mb-0.5 text-black dark:text-white">Asim Zaidi</h1>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 font-normal">Engineer &amp; Builder</p>
+                    </div>
                 </div>
-        
-                <!-- Ticker Container -->
-                <div class="overflow-hidden relative" style="mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
-                    <!-- Gradient Overlays -->
-                    <div class="z-10 pointer-events-none bg-gradient-to-r from-[#f2f2f2] dark:from-[#050505] via-black/80 to-transparent w-20 absolute top-0 bottom-0 left-0" style="visibility: hidden;"></div>
-        
-                    <!-- Animated Ticker -->
-                    <div class="ticker-track flex gap-16 pt-2 pb-2 gap-x-16 gap-y-16 items-center">
-                        
-                        <!-- First set of names -->
-                        <div class="flex gap-16 shrink-0 gap-x-16 gap-y-16 items-center">
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif italic">Roomi</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Navaid</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-playfair">Faisal</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Maheen</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-merriweather italic">Justis</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Joe</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif">Nicolai</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Daniel</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-playfair italic">Jayce</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Owen</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-merriweather">Rondo</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Abrar</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif italic">Patrick</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Ryan</span>
-                        </div>
-        
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="flex items-center gap-16 shrink-0 gap-x-16 gap-y-16">
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif italic">Roomi</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Navaid</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-playfair">Faisal</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Maheen</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-merriweather italic">Justis</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Joe</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif">Nicolai</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Daniel</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-playfair italic">Jayce</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Owen</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-merriweather">Rondo</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Abrar</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif italic">Patrick</span>
-                            <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Ryan</span>
+                <img src="/public/preview.png" alt="Preview" class="h-20 w-auto object-contain collage-preview" id="collage-thumb" onclick="openImageModal()">
+            </header>
+
+            <!-- Bio -->
+            <section class="mb-12 w-full space-y-6 text-sm md:text-[15px] leading-7 text-gray-600 dark:text-[#A1A1AA] font-normal">
+                <p>
+                    I'm currently a <span class="text-gray-900 dark:text-white font-medium">senior engineer</span> at a fintech startup building the world's first perpetual futures exchange. Before that, I was a Lead Frontend Engineer on the <span class="text-gray-900 dark:text-white font-medium">AI Hub at Apple</span> headquarters. Prior to Apple, I <span class="text-gray-900 dark:text-white font-medium">led a team at Atlassian</span> where we built an internal customer analytics platform (C360), working directly with the Head of Data and the CRO. Earlier in my career, I worked at Livly, a prop-tech startup in Chicago's West Loop — an experience that shaped how I think about product, teams, and ownership.
+                </p>
+                <p>
+                    Outside of work, I run <a href="https://techmade.co" target="_blank" class="text-gray-900 dark:text-white font-medium link-hover">Techmade</a>. It's mostly a collection of things I enjoy building with friends. Sometimes that means creating world-class websites for people we believe in. Other times it's writing. Techmade is now one of the <span class="text-gray-900 dark:text-white font-medium">largest programming blogs on the internet</span>, and we recently <span class="text-gray-900 dark:text-white font-medium">launched a frontend interview prep platform</span> designed to be the most practical, no-fluff resource for engineers aiming for big-tech roles.
+                </p>
+                <p>
+                    I'm also the creator of <a href="https://autogripghost.com" target="_blank" class="text-gray-900 dark:text-white font-medium link-hover">Ghost Driver</a> — an idea I came up with while not driving my Tesla.
+                </p>
+                <p>
+                    What's next? I'm focused on growing as an engineer, especially in the AI-driven era we've entered. I want to keep empowering others through Techmade. Longer term, I plan to devote my time and energy to a cause that matters far more to me than temporary monetary outcomes. That chapter isn't ready to be shared yet.
+                </p>
+                <p>
+                    Fitness is another major part of my life. It's something I neglected for years while I was fully focused on building software products. These days, I train consistently and enjoy <span class="text-gray-900 dark:text-white font-medium">triathlons</span>, <span class="text-gray-900 dark:text-white font-medium">boxing</span>, and <span class="text-gray-900 dark:text-white font-medium">lifting</span>. I'm a former <span class="text-gray-900 dark:text-white font-medium">gymnast</span> — not actively competing anymore, but the mindset never really leaves.
+                </p>
+            </section>
+
+            <!-- FOREVER GRATEFUL TICKER -->
+            <section class="z-10 sm:pb-24 sm:pt-10 pt-8 pb-8 relative w-full">
+                <div class="max-w-7xl mr-auto ml-auto">
+                    <div class="text-center mb-10">
+                        <p class="uppercase text-xs font-medium text-zinc-500 tracking-wide">Forever grateful for</p>
+                    </div>
+
+                    <!-- Ticker Container -->
+                    <div class="overflow-hidden relative" style="mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);">
+                        <div class="ticker-track flex gap-16 pt-2 pb-2 gap-x-16 gap-y-16 items-center">
+                            <div class="flex gap-16 shrink-0 gap-x-16 gap-y-16 items-center">
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif italic">Roomi</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Navaid</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-playfair">Faisal</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Maheen</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-merriweather italic">Justis</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Joe</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif">Nicolai</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Daniel</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-playfair italic">Jayce</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Owen</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-merriweather">Rondo</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Abrar</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif italic">Patrick</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Ryan</span>
+                            </div>
+                            <div class="flex items-center gap-16 shrink-0 gap-x-16 gap-y-16">
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif italic">Roomi</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Navaid</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-playfair">Faisal</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Maheen</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-merriweather italic">Justis</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Joe</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif">Nicolai</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Daniel</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-playfair italic">Jayce</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Owen</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-merriweather">Rondo</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Abrar</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight font-instrument-serif italic">Patrick</span>
+                                <span class="text-lg text-zinc-400 hover:text-black dark:hover:text-white transition-colors duration-300 font-normal tracking-tight">Ryan</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <footer class="mt-8 mb-10 text-xs text-gray-400 dark:text-zinc-600 font-light">
-            © 2025 Asim Zaidi. All rights reserved.
-        </footer>
+            <footer class="mt-8 mb-10 text-xs text-gray-400 dark:text-zinc-600 font-light">
+                © 2025 Asim Zaidi. All rights reserved.
+            </footer>
+        </div>
+
+        <!-- ISLAM PAGE -->
+        <div id="islam-page" class="page-section hidden flex-col max-w-4xl mx-auto pt-32 px-6 pb-32">
+            <h1 class="text-3xl md:text-5xl font-medium tracking-tight mb-8 text-black dark:text-white">Islam</h1>
+
+            <!-- Intro -->
+            <div class="mb-16 space-y-6 text-sm md:text-[15px] leading-7 text-gray-600 dark:text-[#A1A1AA] font-normal">
+                <p>
+                    I'm rediscovering Islam right now, and it's been one of the most meaningful chapters of my life. Not in a performative way, but in the quiet moments where things finally make sense. There's a deeper conviction forming, an alignment between what I believe and how I live. It's humbling to realize that the answers I've been searching for were always there, waiting for me to be ready to listen.
+                </p>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="mb-12">
+                <h2 class="text-xl md:text-2xl font-medium tracking-tight mb-8 text-black dark:text-white">Writings</h2>
+                <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Blogs will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <footer class="mt-8 mb-10 text-xs text-gray-400 dark:text-zinc-600 font-light">
+                © 2025 Asim Zaidi. All rights reserved.
+            </footer>
+        </div>
+
+        <!-- TRAINING SPLIT PAGE -->
+        <div id="training-page" class="page-section hidden flex-col max-w-5xl mx-auto pt-32 px-6 pb-32">
+            <h1 class="text-3xl md:text-5xl font-medium tracking-tight mb-8 text-black dark:text-white">Training Split</h1>
+
+            <!-- Intro -->
+            <div class="mb-12 space-y-6 text-sm md:text-[15px] leading-7 text-gray-600 dark:text-[#A1A1AA] font-normal">
+                <p>
+                    My current training consists of <span class="text-gray-900 dark:text-white font-medium">traditional strength training</span>, <span class="text-gray-900 dark:text-white font-medium">boxing</span>, and <span class="text-gray-900 dark:text-white font-medium">Olympic triathlon training</span>. I'm looking forward to getting back into <span class="text-gray-900 dark:text-white font-medium">wrestling</span> and competing in <span class="text-gray-900 dark:text-white font-medium">Hyrox</span> events, with the <span class="text-gray-900 dark:text-white font-medium">Alcatraz triathlon</span> as a longer-term goal.
+                </p>
+            </div>
+
+            <!-- Week Overview -->
+            <div class="mb-12 overflow-x-auto">
+                <h2 class="text-xl md:text-2xl font-medium tracking-tight mb-6 text-black dark:text-white">Arnold Split Overview</h2>
+                <div class="min-w-full bg-white/50 dark:bg-zinc-900/50 rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-100 dark:bg-zinc-800 border-b border-gray-200 dark:border-gray-700">
+                            <tr>
+                                <th class="text-left px-6 py-4 font-medium text-gray-900 dark:text-white">Day</th>
+                                <th class="text-left px-6 py-4 font-medium text-gray-900 dark:text-white">Strength</th>
+                                <th class="text-left px-6 py-4 font-medium text-gray-900 dark:text-white">Cardio</th>
+                                <th class="text-left px-6 py-4 font-medium text-gray-900 dark:text-white">Recovery</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+                            <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Monday</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">REST</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">—</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">—</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Tuesday</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Chest (Heavy) & Back (Volume)</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Long distance run</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Stretch, Sauna 20m</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Wednesday</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Arms (Heavy) & Shoulders (Volume)</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">1 hour boxing</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Stretch</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Thursday</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Legs (Heavy Hamstrings + Heavy Calves)</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">—</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Stretch, Sauna 20m</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Friday</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Chest (Volume) & Back (Heavy)</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">1 hour boxing</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Stretch, Sauna 20m</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Saturday</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Arms (Volume) & Shoulders (Heavy)</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Long distance run</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Stretch</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-zinc-800/50 transition-colors">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Sunday</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Legs (Heavy Quads)</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">1 hour boxing</td>
+                                <td class="px-6 py-4 text-gray-600 dark:text-gray-400">Stretch</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detailed Daily Breakdown -->
+            <div class="space-y-8">
+                <h2 class="text-xl md:text-2xl font-medium tracking-tight text-black dark:text-white">Detailed Breakdown</h2>
+                <div id="workout-days" class="space-y-6">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Cardio/Conditioning Section -->
+            <div class="mt-12 p-6 bg-white/50 dark:bg-zinc-900/50 rounded-lg border border-gray-200 dark:border-gray-800">
+                <h3 class="text-lg font-medium tracking-tight mb-4 text-black dark:text-white">Cardio & Conditioning</h3>
+                <div class="space-y-3 text-sm md:text-[15px] leading-7 text-gray-600 dark:text-[#A1A1AA]">
+                    <p><span class="text-gray-900 dark:text-white font-medium">Boxing:</span> 3 sessions per week. No sparring yet — focused on bag work, mitt work, controlled technical sparring, defense, and conditioning.</p>
+                    <p><span class="text-gray-900 dark:text-white font-medium">Running:</span> Long distance runs 2x per week, integrated with strength training days.</p>
+                    <p><span class="text-gray-900 dark:text-white font-medium">Swimming:</span> Part of triathlon training protocol.</p>
+                </div>
+            </div>
+
+            <!-- Recovery Section -->
+            <div class="mt-6 p-6 bg-white/50 dark:bg-zinc-900/50 rounded-lg border border-gray-200 dark:border-gray-800">
+                <h3 class="text-lg font-medium tracking-tight mb-4 text-black dark:text-white">Recovery Protocol</h3>
+                <div class="space-y-3 text-sm md:text-[15px] leading-7 text-gray-600 dark:text-[#A1A1AA]">
+                    <p><span class="text-gray-900 dark:text-white font-medium">Sauna:</span> 20-minute sessions, 3-5 times per week.</p>
+                    <p><span class="text-gray-900 dark:text-white font-medium">Stretching:</span> Daily.</p>
+                    <p><span class="text-gray-900 dark:text-white font-medium">Massage:</span> Bi-weekly deep tissue sessions.</p>
+                    <p><span class="text-gray-900 dark:text-white font-medium">Ice Baths:</span> As needed for recovery.</p>
+                </div>
+            </div>
+
+            <footer class="mt-16 mb-10 text-xs text-gray-400 dark:text-zinc-600 font-light">
+                © 2025 Asim Zaidi. All rights reserved.
+            </footer>
+        </div>
+
     </main>
 
     <!-- Added image modal for fullscreen view -->
@@ -361,6 +570,103 @@
     </div>
 
     <script>
+        // Blog Posts Data
+        const blogPosts = [
+            {
+                title: "Why I Believe in Allah ﷻ",
+                description: "A personal reflection on faith, conviction, and finding deeper meaning in Islam.",
+                url: "https://medium.com/@az23chicago/why-i-believe-in-allah-%EF%B7%BB-60e1bdfd0efe",
+                date: "2025",
+                image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*8KqZxQJZJZ5ZJ5qJ5qJ5qA.jpeg" // You can update this with actual image if needed
+            }
+            // Add more blog posts here as you publish them
+        ];
+
+        // Workout Days Data
+        const workoutDays = [
+            {
+                day: "Monday",
+                title: "REST",
+                exercises: []
+            },
+            {
+                day: "Tuesday",
+                title: "Chest & Back 1 (Heavy Flat Bench + Heavy Close Row)",
+                exercises: [
+                    { name: "Volume Lat pulldowns (Wide)", sets: "3-4 sets", reps: "10-15 reps", notes: "1st set warmup, light. Full contraction." },
+                    { name: "Heavy Flat Barbell Bench", sets: "2-3 sets", reps: "2-5 reps", notes: "1 set warmup. Work up to heavy singles on some days." },
+                    { name: "Heavy Cable row (Close)", sets: "3 sets", reps: "6-8 reps", notes: "Close grip." },
+                    { name: "Top Set Incline Dumbbell", sets: "3-4 sets", reps: "6-10 reps", notes: "1st set light, 2nd heavy, 3rd-4th medium." },
+                    { name: "Top Set Single Arm Dumbbell Row", sets: "3-4 sets", reps: "6-10 reps", notes: "1st set light, 2nd heavy, 3rd-4th medium." },
+                    { name: "Volume Cable flys", sets: "3-4 sets", reps: "8-10 reps", notes: "Vary angle (upper, mid, lower)." }
+                ]
+            },
+            {
+                day: "Wednesday",
+                title: "Arms & Shoulders 1 (Heavy Triceps & Biceps)",
+                exercises: [
+                    { name: "Volume Rear Delt Cable Fly", sets: "3-4 sets", reps: "10 reps", notes: "Fully stretch. Activates you for workout." },
+                    { name: "Volume Arnold Dumbbell Shoulder Press", sets: "3-4 sets", reps: "10 reps", notes: "" },
+                    { name: "Heavy Tricep Cable Pushdown", sets: "3-4 sets", reps: "6-10 reps", notes: "1st set warmup." },
+                    { name: "Heavy Dumbbell Bicep Curls", sets: "3-4 sets", reps: "6-10 reps", notes: "1st set warmup." },
+                    { name: "Volume 45° Shoulder Raises SUPERSET Shrugs", sets: "3-4 sets", reps: "10 reps", notes: "Raise to head level, slow down. Shrugs with 45lb plates." },
+                    { name: "Heavy Barbell Skull Crushers", sets: "3 sets", reps: "8 reps", notes: "Keep elbows tucked." },
+                    { name: "Heavy Hammer Cable Curls", sets: "3 sets", reps: "8 reps", notes: "" },
+                    { name: "Volume Tricep Kickback SUPERSET Palm Up Curls", sets: "3-4 sets", reps: "10 reps", notes: "Medium weight." }
+                ]
+            },
+            {
+                day: "Thursday",
+                title: "Legs 1 (Heavy Hamstrings + Heavy Calves)",
+                exercises: [
+                    { name: "Volume Leg Press", sets: "3-4 sets", reps: "8-12 reps", notes: "1st set warmup." },
+                    { name: "Heavy Leg Curl Machine", sets: "3-4 sets", reps: "8-10 reps", notes: "1st set 10 reps, then heavy." },
+                    { name: "Volume Leg Extensions Machine", sets: "4 sets", reps: "10-12 reps", notes: "Medium weight." },
+                    { name: "Heavy Dumbbell Romanian Dead Lifts", sets: "3-4 sets", reps: "8-10 reps", notes: "" },
+                    { name: "Heavy Calf machine", sets: "3-4 sets", reps: "8-10 reps", notes: "" },
+                    { name: "Volume Lunges", sets: "4 sets", reps: "12 reps", notes: "Bodyweight only." }
+                ]
+            },
+            {
+                day: "Friday",
+                title: "Chest & Back 2 (Heavy Incline Bench + Heavy Wide Pulldown)",
+                exercises: [
+                    { name: "Heavy Wide Pulldown", sets: "2-3 sets", reps: "8-10 reps", notes: "1st set warmup, then heavy." },
+                    { name: "Volume Dumbbell Flat Bench", sets: "3-4 sets", reps: "10 reps", notes: "Focus on chest stretch. Breathe." },
+                    { name: "Volume Close Grip Machine Row", sets: "3-4 sets", reps: "8-10 reps", notes: "" },
+                    { name: "Heavy Barbell Incline Bench", sets: "2-3 sets", reps: "6-10 reps", notes: "1st set warmup, then heavy." },
+                    { name: "Top Set Decline Chest Machine", sets: "3 sets", reps: "6-12 reps", notes: "Light, heavy, medium." },
+                    { name: "Heavy Single Arm Side Lat Pulldown", sets: "3 sets", reps: "8 reps", notes: "" }
+                ]
+            },
+            {
+                day: "Saturday",
+                title: "Arms & Shoulders 2 (Heavy Shoulders)",
+                exercises: [
+                    { name: "Volume Face Pulls", sets: "3-4 sets", reps: "10 reps", notes: "" },
+                    { name: "Heavy Dumbbell Shoulder Press", sets: "3-4 sets", reps: "6-10 reps", notes: "1 warmup, 2-3 heavy, 1 medium." },
+                    { name: "Volume Tricep Pushdown", sets: "3-4 sets", reps: "8-10 reps", notes: "" },
+                    { name: "Volume Bicep Cable Curls", sets: "3-4 sets", reps: "12 reps", notes: "Light." },
+                    { name: "Heavy Dumbbell Shoulder Front Raise", sets: "3-4 sets", reps: "8 reps", notes: "" },
+                    { name: "Volume Overhead Cable Extension", sets: "3 sets", reps: "10 reps", notes: "" },
+                    { name: "Volume Curl Machine Seated", sets: "3-4 sets", reps: "8-10 reps", notes: "" },
+                    { name: "Heavy Shoulder Flys Dumbbell", sets: "3-4 sets", reps: "8 reps", notes: "" }
+                ]
+            },
+            {
+                day: "Sunday",
+                title: "Legs 2 (Heavy Quads)",
+                exercises: [
+                    { name: "Heavy Squats", sets: "3-5 sets", reps: "6-10 reps", notes: "1-2 warmup sets, then heavy." },
+                    { name: "Volume Laying Hamstring Curl", sets: "3-4 sets", reps: "8-10 reps", notes: "1 warmup, then medium." },
+                    { name: "Heavy Leg Extensions Machine", sets: "3-4 sets", reps: "8 reps", notes: "" },
+                    { name: "Volume Calf Raises Machine", sets: "3 sets", reps: "10 reps", notes: "" },
+                    { name: "Volume Barbell Romanian Dead Lifts", sets: "3 sets", reps: "10 reps", notes: "Light." },
+                    { name: "Heavy Walking Lunges", sets: "3 sets", reps: "10 per leg", notes: "25lb plates/dumbbells/kettlebells." }
+                ]
+            }
+        ];
+
         // Data for animation
         const words = [
             "patient", 
@@ -386,7 +692,6 @@
         const staticText = document.getElementById('intro-text-static');
         const dynamicText = document.getElementById('intro-text-dynamic');
         const mainContent = document.getElementById('main-content');
-        const themeToggleWrapper = document.getElementById('theme-toggle-wrapper');
         const audio = document.getElementById('startup-audio');
         const body = document.body;
 
@@ -491,20 +796,21 @@
 
         function finishIntro() {
             const collageOverlay = document.getElementById('collage-overlay');
-            
+            const navbar = document.getElementById('navbar');
+
             collageOverlay.style.transition = 'opacity 0.7s ease';
             collageOverlay.style.opacity = '0';
-            
+
             setTimeout(() => {
                 // Fade out intro overlay
                 introOverlay.classList.add('opacity-0', 'pointer-events-none');
-                
+
                 // Unlock scrolling
                 body.classList.remove('intro-active');
-                
+
                 // Fade in main elements
                 mainContent.classList.remove('opacity-0', 'pointer-events-none');
-                themeToggleWrapper.classList.remove('opacity-0');
+                navbar.classList.remove('opacity-0');
 
                 setTimeout(() => {
                     introOverlay.style.display = 'none';
@@ -523,19 +829,21 @@
         }
 
         function skipToMain() {
+            const navbar = document.getElementById('navbar');
+
             // Stop any audio playing
             audio.pause();
             audio.currentTime = 0;
-            
+
             // Hide all intro elements immediately
             startScreen.style.display = 'none';
             introOverlay.style.display = 'none';
             collageOverlay.style.display = 'none';
-            
+
             // Show main content immediately
             body.classList.remove('intro-active');
             mainContent.classList.remove('opacity-0', 'pointer-events-none');
-            themeToggleWrapper.classList.remove('opacity-0');
+            navbar.classList.remove('opacity-0');
         }
 
         document.addEventListener('keydown', (e) => {
@@ -543,11 +851,136 @@
                 // Check if we're in the intro (start screen or intro animation)
                 const inStartScreen = startScreen.style.display !== 'none';
                 const inIntro = !introOverlay.classList.contains('hidden') || introOverlay.style.display !== 'none';
-                
+
                 if (inStartScreen || inIntro) {
                     skipToMain();
                 }
             }
+        });
+
+        // Navigation Functions
+        function navigateTo(page) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('flex');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(`${page}-page`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                targetPage.classList.add('flex');
+            }
+
+            // Update active nav link
+            document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+                if (link.dataset.page === page) {
+                    link.classList.add('text-black', 'dark:text-white', 'font-medium');
+                    link.classList.remove('text-gray-600', 'dark:text-gray-400');
+                } else {
+                    link.classList.remove('text-black', 'dark:text-white', 'font-medium');
+                    link.classList.add('text-gray-600', 'dark:text-gray-400');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Functions
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuBackdrop = document.getElementById('menu-backdrop');
+        const menuDrawer = document.getElementById('menu-drawer');
+        const closeMenuBtn = document.getElementById('close-menu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('pointer-events-none');
+            setTimeout(() => {
+                menuBackdrop.classList.remove('opacity-0');
+                menuDrawer.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeMobileMenu() {
+            menuBackdrop.classList.add('opacity-0');
+            menuDrawer.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('pointer-events-none');
+            }, 300);
+        }
+
+        hamburger.addEventListener('click', openMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        menuBackdrop.addEventListener('click', closeMobileMenu);
+
+        // Render Blog Posts
+        function renderBlogPosts() {
+            const blogGrid = document.getElementById('blog-grid');
+            blogGrid.innerHTML = blogPosts.map(post => `
+                <a href="${post.url}" target="_blank" class="group block p-6 bg-white/50 dark:bg-zinc-900/50 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all hover:shadow-lg">
+                    <h3 class="text-lg font-medium tracking-tight mb-2 text-black dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">${post.title}</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">${post.description}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 dark:text-gray-500">${post.date}</span>
+                        <iconify-icon icon="lucide:external-link" class="text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors" width="16"></iconify-icon>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Render Workout Days
+        function renderWorkoutDays() {
+            const workoutContainer = document.getElementById('workout-days');
+            workoutContainer.innerHTML = workoutDays.map(day => {
+                if (day.exercises.length === 0) {
+                    return `
+                        <div class="p-6 bg-white/50 dark:bg-zinc-900/50 rounded-lg border border-gray-200 dark:border-gray-800">
+                            <div class="flex items-center gap-3 mb-2">
+                                <h3 class="text-lg font-medium text-black dark:text-white">${day.day}</h3>
+                                <span class="px-3 py-1 text-xs font-medium rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">REST</span>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Recovery day</p>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <details class="group p-6 bg-white/50 dark:bg-zinc-900/50 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all">
+                        <summary class="cursor-pointer list-none flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-medium text-black dark:text-white mb-1">${day.day}</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">${day.title}</p>
+                            </div>
+                            <iconify-icon icon="lucide:chevron-down" class="text-gray-400 group-open:rotate-180 transition-transform" width="20"></iconify-icon>
+                        </summary>
+                        <div class="mt-6 space-y-4">
+                            ${day.exercises.map(exercise => `
+                                <div class="pl-4 border-l-2 border-gray-200 dark:border-gray-700">
+                                    <h4 class="text-sm font-medium text-gray-900 dark:text-white mb-1">${exercise.name}</h4>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">
+                                        ${exercise.sets} × ${exercise.reps}
+                                        ${exercise.notes ? `<span class="block mt-1 text-gray-500 dark:text-gray-500">${exercise.notes}</span>` : ''}
+                                    </p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </details>
+                `;
+            }).join('');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBlogPosts();
+            renderWorkoutDays();
+
+            // Set home as active by default
+            document.querySelectorAll('[data-page="home"]').forEach(link => {
+                link.classList.add('text-black', 'dark:text-white', 'font-medium');
+                link.classList.remove('text-gray-600', 'dark:text-gray-400');
+            });
         });
     </script>
 
