@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talk with me about life with POTS · Asim Zaidi</title>
+<meta name="description" content="I’m looking for ten people with POTS for a 20-minute video call this week. Nothing is for sale and no app exists.">
+<meta name="color-scheme" content="dark light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0A;--ink:#EEEBE4;--soft:#B3AEA5;--faint:#7E7A73;--rule:#262523;--card:#141413;--accent:#6CCFC7;--on-accent:#06100F;--focus:#6CCFC7}
+:root[data-theme="light"]{--bg:#F6F3EC;--ink:#151413;--soft:#4A4740;--faint:#6B675F;--rule:#DAD5CA;--card:#EEEAE1;--accent:#0B6461;--on-accent:#FFFFFF;--focus:#0B6461}
+@media (prefers-color-scheme:light){:root:not([data-theme]){--bg:#F6F3EC;--ink:#151413;--soft:#4A4740;--faint:#6B675F;--rule:#DAD5CA;--card:#EEEAE1;--accent:#0B6461;--on-accent:#FFFFFF;--focus:#0B6461}}
+*,*::before,*::after{box-sizing:border-box;animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,sans-serif;font-size:1.1875rem;line-height:1.62}
+@media (max-width:30rem){body{font-size:1.125rem}}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:.07em}
+a:hover{text-decoration-thickness:.15em}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:0}.skip:focus{left:1rem;top:1rem;background:var(--bg);padding:.75rem 1rem;z-index:3}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+@media (min-width:48rem){.wrap{padding:0 2.5rem}}
+.serif{font-family:"Source Serif 4",Georgia,serif}
+p{margin:0;max-width:60ch;text-wrap:pretty}
+p+p{margin-top:.9rem}
+
+.top{display:flex;align-items:center;gap:1rem;padding-top:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid var(--rule)}
+.mark{font-weight:700;letter-spacing:.04em;color:var(--ink);text-decoration:none;font-size:1.05rem}
+.top .home{color:var(--soft);font-size:.95rem;text-decoration:none;margin-right:auto}
+.top .home:hover{color:var(--ink);text-decoration:underline}
+.theme{min-height:44px;padding:0 1rem;border:1px solid var(--rule);background:transparent;color:var(--ink);font:inherit;font-size:.95rem;border-radius:999px;cursor:pointer;white-space:nowrap}
+
+.hero{display:grid;gap:2.5rem;padding-top:2rem;padding-bottom:3.5rem}
+@media (min-width:56rem){.hero{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:4rem;align-items:end;padding-top:4.5rem;padding-bottom:5rem}}
+.kicker{font-size:.95rem;color:var(--soft);display:flex;flex-wrap:wrap;gap:.25rem .9rem}
+.kicker b{color:var(--accent);font-weight:700}.kicker b,.kicker span{white-space:nowrap}.kicker{text-wrap:wrap}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:500;font-size:clamp(2.15rem,7.4vw,4.4rem);line-height:1.04;letter-spacing:-.025em;margin:.9rem 0 0;text-wrap:balance;max-width:16ch}
+.lede{font-size:1.2em;color:var(--soft);margin-top:1.25rem;max-width:34ch}
+.lede strong{color:var(--ink);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;margin-top:1.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:60px;padding:.85rem 1.75rem;background:var(--accent);color:var(--on-accent);font-weight:700;font-size:1.125rem;text-decoration:none;border-radius:999px}
+.btn:hover{text-decoration:underline;text-decoration-thickness:.1em}
+.btn svg{flex:none}
+.cta small{font-size:.95rem;color:var(--faint)}
+
+.letter{background:var(--card);border:1px solid var(--rule);border-radius:22px;padding:1.6rem 1.5rem 1.4rem;position:relative}
+.letter .who{display:flex;align-items:center;gap:.9rem}
+.letter img{width:56px;height:56px;border-radius:50%;object-fit:cover;background:var(--rule);flex:none}
+.letter .who b{display:block;font-weight:700}
+.letter .who span{display:block;font-size:.95rem;color:var(--soft);white-space:nowrap}
+.letter blockquote{margin:1.25rem 0 0;font-family:"Source Serif 4",Georgia,serif;font-size:clamp(1.5rem,3.2vw,1.85rem);line-height:1.22;letter-spacing:-.01em;font-weight:500;text-wrap:balance}
+.letter p{margin-top:.9rem;color:var(--soft)}
+.letter .sig{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-size:1.35rem;color:var(--ink);margin-top:1rem}
+
+.glance{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media (min-width:48rem){.glance{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.glance div{padding:1.1rem 0;border-bottom:1px solid var(--rule)}
+.glance div:nth-child(odd){padding-right:1rem}
+@media (min-width:48rem){.glance div{border-bottom:0;padding:1.4rem 1.25rem 1.4rem 0}.glance div+div{border-left:1px solid var(--rule);padding-left:1.25rem}}
+@media (max-width:47.99rem){.glance div:nth-last-child(-n+2){border-bottom:0}.glance div:nth-child(even){border-left:1px solid var(--rule);padding-left:1rem}}
+.glance dt{font-size:.875rem;color:var(--faint);font-weight:600;letter-spacing:.02em}
+.glance dd{margin:.15rem 0 0;font-family:"Source Serif 4",Georgia,serif;font-size:1.45rem;line-height:1.2;font-weight:500}
+
+.sec{display:grid;gap:1rem;padding-top:4rem;padding-bottom:1rem}
+@media (min-width:56rem){.sec{grid-template-columns:13rem minmax(0,1fr);gap:3rem;padding-top:6rem}}
+.sec-label{display:flex;gap:.75rem;align-items:baseline;font-size:.95rem;color:var(--faint);font-weight:600}
+.sec-label span{font-variant-numeric:tabular-nums;color:var(--accent)}
+@media (min-width:56rem){.sec-label{flex-direction:column;gap:.35rem;position:sticky;top:1.5rem;align-self:start}}
+h2{font-family:"Source Serif 4",Georgia,serif;font-weight:500;font-size:clamp(1.75rem,4.4vw,2.6rem);line-height:1.12;letter-spacing:-.02em;margin:0 0 1.25rem;text-wrap:balance;max-width:22ch}
+.body>p{color:var(--soft)}.body>p strong{color:var(--ink)}
+
+.ledger{display:grid;gap:0;margin-top:.5rem;border-top:1px solid var(--rule)}
+@media (min-width:44rem){.ledger{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2.5rem}}
+.ledger div{padding:1.4rem 0;border-bottom:1px solid var(--rule)}
+.ledger b{display:block;font-family:"Source Serif 4",Georgia,serif;font-weight:500;font-size:clamp(2.4rem,6vw,3.25rem);line-height:1;letter-spacing:-.03em}
+.ledger b small{font-size:.5em;letter-spacing:0;margin-left:.1em}
+.ledger p{margin-top:.55rem;color:var(--soft);max-width:34ch}
+.src{margin-top:1.25rem;font-size:.95rem;color:var(--faint)}
+
+.nots{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+@media (min-width:44rem){.nots{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.nots li{display:flex;gap:.85rem;align-items:flex-start;padding:1rem 1.1rem;border:1px solid var(--rule);border-radius:16px}
+.nots .no{flex:none;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--soft);color:var(--soft);border-radius:6px;padding:.05rem .4rem;margin-top:.2rem}
+
+.invite{border:1px solid var(--rule);border-radius:22px;overflow:hidden;background:var(--card);max-width:40rem}
+.invite-h{display:flex;gap:1rem;align-items:center;padding:1.25rem 1.4rem;border-bottom:1px solid var(--rule)}
+.cal{flex:none;width:58px;border-radius:12px;overflow:hidden;text-align:center;border:1px solid var(--rule);background:var(--bg)}
+.cal span{display:block;background:var(--accent);color:var(--on-accent);font-size:.75rem;font-weight:700;letter-spacing:.08em;padding:.15rem 0}
+.cal b{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:1.6rem;font-weight:500;line-height:1.5}
+.invite-h strong{display:block;font-size:1.15rem}
+.invite-h small{color:var(--soft);font-size:.95rem}
+.invite ul{list-style:none;margin:0;padding:.4rem 1.4rem 1rem}
+.invite li{display:flex;gap:.85rem;padding:.75rem 0;border-bottom:1px solid var(--rule)}
+.invite li:last-child{border-bottom:0}
+.invite li svg{flex:none;margin-top:.25rem;color:var(--soft)}
+.invite .bad{margin:0 1rem 1rem;padding:1rem 1.15rem;border-radius:14px;border:1.5px solid var(--accent)}
+.invite .bad strong{display:block}
+.invite .bad p{color:var(--soft);margin-top:.2rem}
+
+.privacy{display:grid;gap:0;border-top:1px solid var(--rule)}
+@media (min-width:44rem){.privacy{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2.5rem}}
+.privacy div{padding:1.15rem 0;border-bottom:1px solid var(--rule)}
+.privacy strong{display:block;font-size:1.05rem}
+.privacy p{color:var(--soft);margin-top:.2rem}
+
+.people{display:grid;gap:.75rem}
+@media (min-width:44rem){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.person{padding:1.25rem 1.3rem;border:1px solid var(--rule);border-radius:18px}
+.person h3{margin:0;font-family:"Source Serif 4",Georgia,serif;font-weight:500;font-size:1.4rem;line-height:1.2}
+.person p{margin-top:.35rem;color:var(--soft)}
+.person.most{border:2px solid var(--accent);background:var(--card)}
+.person.most .tag{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.note{margin-top:1.1rem;color:var(--soft)}
+
+.book{margin-top:5rem;padding:2.25rem 1.4rem;border-radius:28px;background:var(--card);border:1px solid var(--rule)}
+@media (min-width:48rem){.book{padding:3.5rem 3.5rem}}
+.book h2{max-width:18ch;font-size:clamp(2rem,5.5vw,3.2rem)}
+.book .opt{color:var(--soft);max-width:52ch}
+.mail{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--rule)}
+.mail p{color:var(--soft)}
+.mail-row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem;margin-top:.5rem}
+.addr{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(1.3rem,4vw,1.6rem);user-select:all;-webkit-user-select:all;word-break:break-all}
+.copy{min-height:48px;padding:0 1.25rem;border:2px solid var(--ink);background:transparent;color:var(--ink);font:inherit;font-weight:700;font-size:1rem;border-radius:999px;cursor:pointer}
+.status{font-size:.95rem;color:var(--soft);min-height:1.5em;margin-top:.5rem}
+
+.me{display:flex;gap:1.1rem;align-items:flex-start}
+.me img{width:72px;height:72px;border-radius:50%;object-fit:cover;background:var(--rule);flex:none}
+.me p{color:var(--soft)}.me p strong{color:var(--ink)}
+footer{margin-top:5rem;padding-top:1.5rem;padding-bottom:3rem;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:.95rem;color:var(--faint)}
+footer a{color:var(--soft)}
+@media (forced-colors:active){.btn,.person.most,.invite .bad{border:2px solid ButtonText}}
+</style>
+</head>
+<body>
+<a class="skip" href="#book">Skip to booking</a>
+<div class="wrap">
+<header class="top">
+<a class="mark" href="/">AZ23</a>
+<a class="home" href="/">Home</a>
+<button class="theme" type="button" id="theme" aria-pressed="true">Light mode</button>
+</header>
+
+<main id="main">
+<section class="hero" aria-labelledby="ask">
+<div>
+<p class="kicker"><b>Research calls about POTS</b><span>About 3 minutes to read</span></p>
+<h1 id="ask">I’d like to talk with ten people who have POTS this week.</h1>
+<p class="lede">A <strong>20-minute video call</strong> about what your days are actually like. <strong>Nothing is for sale</strong>, and no app exists yet.</p>
+<div class="cta">
+<!-- Replace with your Cal.com link (also in the Book a time section) -->
+<a class="btn" href="https://cal.com/asim-zaidi-x2p7mq/pots">Book a 20-minute call<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<small>You can stop reading here.</small>
+</div>
+</div>
+<aside class="letter" aria-label="A note from Asim">
+<div class="who"><img src="/public/asim.png" alt="Asim Zaidi"><div><b>Asim Zaidi</b><span>Software engineer, Chicago</span></div></div>
+<blockquote>I haven’t built anything, and I might not.</blockquote>
+<p>If what I hear is that no app could help, that’s a real answer, and I’d rather know now.</p>
+<p class="sig" aria-hidden="true">Asim</p>
+</aside>
+</section>
+
+<dl class="glance" aria-label="The call at a glance">
+<div><dt>Length</dt><dd>20 minutes</dd></div>
+<div><dt>Where</dt><dd>Google Meet</dd></div>
+<div><dt>Camera</dt><dd>Optional</dd></div>
+<div><dt>Recording</dt><dd>None</dd></div>
+</dl>
+
+<section class="sec" aria-labelledby="why">
+<div class="sec-label"><span>01</span>Why</div>
+<div class="body">
+<h2 id="why">Why I’m doing this</h2>
+<p>Someone close to me has POTS. I build software for a living, so I went looking for tools that might help her.</p>
+<p>I found about eight POTS apps for iPhone. Each has five to ten reviews. In other words, almost nobody uses them.</p>
+<p><strong>I have guesses about what might help, and I don’t trust them.</strong> So before I write any code, I want to listen to people who live with this.</p>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="learned">
+<div class="sec-label"><span>02</span>The reading</div>
+<div class="body">
+<h2 id="learned">What I’ve learned so far</h2>
+<div class="ledger">
+<div><b>5<small>y</small> 11<small>m</small></b><p>Average time to diagnosis. Only 1 in 4 people are diagnosed in the first year.</p></div>
+<div><b>27%</b><p>Saw more than ten doctors before being diagnosed.</p></div>
+<div><b>59%</b><p>Were told by a doctor their symptoms were “all in your head.”</p></div>
+<div><b>69%</b><p>Got an anxiety diagnosis before the correct one.</p></div>
+<div><b>5×</b><p>Rise in new cases after the pandemic. Around 30% of people with long COVID meet the criteria for POTS.</p></div>
+<div><b>50–60%</b><p>Are unable to work. 70% have lost income.</p></div>
+</div>
+<p class="src">From large patient surveys and published research. I’m happy to send you the sources.</p>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="notclaiming">
+<div class="sec-label"><span>03</span>Plainly</div>
+<div class="body">
+<h2 id="notclaiming">What I’m not claiming</h2>
+<ul class="nots">
+<li><span class="no">Not</span><span>a doctor.</span></li>
+<li><span class="no">Not</span><span>treatment, diagnosis, or medical advice.</span></li>
+<li><span class="no">Not</span><span>selling anything.</span></li>
+<li><span class="no">Not</span><span>a clinical trial.</span></li>
+<li><span class="no">Not</span><span>collecting your medical records.</span></li>
+<li><span class="no">Not</span><span>promising that anything gets built.</span></li>
+</ul>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="call">
+<div class="sec-label"><span>04</span>The call</div>
+<div class="body">
+<h2 id="call">What happens on the call</h2>
+<div class="invite">
+<div class="invite-h"><div class="cal" aria-hidden="true"><span>20</span><b>min</b></div><div><strong>Talk about life with POTS</strong><small>Google Meet · with Asim</small></div></div>
+<ul>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 7h12v10H3zM15 10l6-3v10l-6-3"></path></svg><span>Your camera can stay off.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"></path></svg><span>I’ll ask about your actual days, what you’ve tried, and what you stopped using.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><span>You can skip any question.</span></li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"></rect></svg><span>You can stop at any point.</span></li>
+</ul>
+<div class="bad"><strong>Bad day? Just reschedule.</strong><p>No explanation needed. That’s expected, and it’s completely fine.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="notes">
+<div class="sec-label"><span>05</span>Your words</div>
+<div class="body">
+<h2 id="notes">What happens to what you tell me</h2>
+<div class="privacy">
+<div><strong>No recording.</strong><p>I take written notes, and that’s all.</p></div>
+<div><strong>Only for me.</strong><p>The notes are for my own understanding.</p></div>
+<div><strong>Never sold or shared.</strong><p>Not with anyone, for any reason.</p></div>
+<div><strong>Never published with your name.</strong><p>And deleted any time you ask.</p></div>
+</div>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="who">
+<div class="sec-label"><span>06</span>Who</div>
+<div class="body">
+<h2 id="who">Who I’m hoping to talk to</h2>
+<p>A mix of people, not one kind.</p>
+<div class="people" style="margin-top:1.25rem">
+<div class="person"><h3>Recently diagnosed</h3><p>Still working out what this means day to day.</p></div>
+<div class="person"><h3>Years in</h3><p>You’ve tried a lot, and you know what you’ve quit.</p></div>
+<div class="person"><h3>Getting worse</h3><p>If things have gotten harder over time, not easier.</p></div>
+<div class="person most"><span class="tag">Especially you</span><h3>Think no app could help</h3><p>These conversations matter most to me.</p></div>
+</div>
+</div>
+</section>
+
+<section class="book" id="book" aria-labelledby="booktitle">
+<h2 id="booktitle">Book a time that suits you.</h2>
+<p class="opt">The booking page asks two optional questions: roughly how long since you were diagnosed, and anything you’d like me to know. I ask only so I can talk to a mix of people.</p>
+<div class="cta">
+<a class="btn" href="https://cal.com/asim-zaidi-x2p7mq/pots">Book a 20-minute call<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div class="mail">
+<p>Rather write first? Email me.</p>
+<div class="mail-row">
+<!-- Replace with your email address -->
+<span class="addr" id="addr">asimzaidih@gmail.com</span>
+<button class="copy" type="button" id="copy">Copy email</button>
+</div>
+<p class="status" id="status" role="status" aria-live="polite"></p>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="me">
+<div class="sec-label"><span>07</span>Me</div>
+<div class="body">
+<h2 id="me">Who I am</h2>
+<div class="me"><img src="/public/asim.png" alt=""><div>
+<p>I’m <strong>Asim Zaidi</strong>, a software engineer in Chicago. I’ve built software at Apple and Atlassian, and apps of my own, including fitness apps.</p>
+<p>More about me at <a href="/">az23chicago.com</a>, or use the email above.</p>
+</div></div>
+</div>
+</section>
+</main>
+
+<footer>
+<span>Thank you for reading this far.</span>
+<span>© 2026 Asim Zaidi</span>
+<a href="/">Back to home</a>
+</footer>
+</div>
+<script>
+(function(){
+var root=document.documentElement,btn=document.getElementById('theme');
+function isDark(){var t=root.getAttribute('data-theme');if(t)return t==='dark';return !window.matchMedia('(prefers-color-scheme: light)').matches;}
+function sync(){var d=isDark();btn.textContent=d?'Light mode':'Dark mode';btn.setAttribute('aria-pressed',String(d));}
+try{var s=localStorage.getItem('pots-research-theme');if(s)root.setAttribute('data-theme',s);}catch(e){}
+sync();
+btn.addEventListener('click',function(){var n=isDark()?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('pots-research-theme',n);}catch(e){}sync();});
+var c=document.getElementById('copy'),st=document.getElementById('status'),el=document.getElementById('addr'),addr=el.textContent.trim();
+c.addEventListener('click',function(){
+ function ok(){st.textContent='Copied: '+addr;}
+ function fail(){var r=document.createRange();r.selectNodeContents(el);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);st.textContent='Selected. Copy it from your menu.';}
+ if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(addr).then(ok,fail);}else{try{var t=document.createElement('textarea');t.value=addr;t.setAttribute('readonly','');t.style.position='absolute';t.style.left='-9999px';document.body.appendChild(t);t.select();var done=document.execCommand('copy');document.body.removeChild(t);done?ok():fail();}catch(e){fail();}}
+});
+})();
+</script>
+</body>
+</html>
